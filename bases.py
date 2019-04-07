@@ -59,7 +59,7 @@ def decode(digits, base):
     # TODO: Decode digits from any base (2 up to 36)
 
     # Thanks to KJ for figuring it out too!
-    elif 2 < base < 36:
+    elif 2 < base <= 36:
         answer = 0
         lenght = len(digits) - 1
         for number in digits:
@@ -124,7 +124,7 @@ def encode(number, base):
 
         return hex
     # TODO: Encode number in any base (2 up to 36)
-    elif 2 < base < 36:
+    elif 2 < base <= 36:
         answer = ""
         while number > 0:
             value = number % base
@@ -158,7 +158,10 @@ def main():
         base2 = int(args[2])
         # Convert given digits between bases
         result = convert(digits, base1, base2)
-        print('{} in base {} is {} in base {}'.format(digits, base1, result, base2))
+        print(result)
+        return result
+
+        # print('{} in base {} is {} in base {}'.format(digits, base1, result, base2))
     else:
         print('Usage: {} digits base1 base2'.format(sys.argv[0]))
         print('Converts digits from base1 to base2')
