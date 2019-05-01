@@ -5,13 +5,21 @@ def contains(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
-
+    if pattern in text:
+        return True
+    return False
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
         or None if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_index here (iteratively and/or recursively)
+    indices = find_all_indexes(text, pattern)
+    if len(indices) > 0:
+        print(indices)
+        return indices[0]
+    return None
+
 
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
@@ -20,6 +28,24 @@ def find_all_indexes(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
 
+    # Class Implementation
+    # https://github.com/lvreynoso/CS1.3-Coursework/blob/master/strings.py
+    indices = []
+    candidates = {}
+    delta = len(pattern)
+    for position, character in enumerate(text):
+        if character == pattern[0]:
+            candidates[position] = 1
+        for index, streak in candidates.items():
+            if streak != False:
+                if index != position and character == pattern[streak]:
+                    candidates[index] += 1
+                elif index != position and character != pattern[streak]:
+                    candidates[index] = False
+                if candidates[index] == delta:
+                    indices.append(index)
+                    candidates[index] = False
+    return indices
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
@@ -40,7 +66,7 @@ def test_string_algorithms(text, pattern):
 def main():
     """Read command-line arguments and test string searching algorithms."""
     import sys
-        args = sys.argv[1:]  # Ignore script file name
+    args = sys.argv[1:]  # Ignore script file name
     if len(args) == 2:
         text = args[0]
         pattern = args[1]
