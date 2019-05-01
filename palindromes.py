@@ -8,11 +8,12 @@ import string
 
 
 def clean_up_text(text):
-    # print(f"text before: {text}")
     text = text.lower()
-    text = text.translate(str.maketrans('','', string.punctuation))
-    # print(f"text after: {text}")
-    return text
+    if text == '':
+        return text
+    else:
+        text = text.replace(" ", "").translate(str.maketrans('', '', string.punctuation))
+        return text
 
 def is_palindrome(text):
     """A string of characters is a palindrome if it reads the same forwards and
@@ -25,23 +26,41 @@ def is_palindrome(text):
 
 
 def is_palindrome_iterative(text):
-    # TODO: implement the is_palindrome function iteratively here
-    pass
+    # MY METHOD
+    # text = clean_up_text(text) # Remove punctuation and put all low caps
+    #
+    # # Reverse the text
+    # reverse = text[::-1]
+    #
+    # # print(f"Reversed Text: {reverse}")
+    # # Checking if both string are equal or not
+    # if (text == reverse):
+    # return False
 
+
+    # KJ's and Connor's METHODs Used as reference
+
+    """
+    Method will compare the first letter to the last.
+    If they don't match, program will return False.
+    If they match, program will continue, will compare 2nd letter and 2nd to last letter.
+    If they all matched, the method will return True.
+
+    """
     text = clean_up_text(text) # Remove punctuation and put all low caps
-
-    # Reverse the text
-    reverse = text[::-1]
-
-    print(f"Reversed Text: {reverse}")
-    # Checking if both string are equal or not
-    if (text == reverse):
-        return True
-    return False
+    front_index = 0
+    back_index = len(text) - 1 # Minus one because we need the last index
 
 
-    # once implemented, change is_palindrome to call is_palindrome_iterative
-    # to verify that your iterative implementation passes all tests
+    while back_index > front_index:
+        if back_index <= front_index:
+            break
+        if text[back_index] != text[front_index]:
+            return False
+
+        front_index += 1
+        back_index -= 1
+    return True
 
 
 def is_palindrome_recursive(text, left=None, right=None):
@@ -66,4 +85,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    # main()
+    print(is_palindrome("No, On!"))
+    print(clean_up_text(text="No, On!"))
