@@ -22,7 +22,6 @@ class LinkedList(object):
         # Append the given items
         if iterable is not None:
             for item in iterable:
-                self.size += 1
                 self.append(item)
 
     def __str__(self):
@@ -91,7 +90,7 @@ class LinkedList(object):
             # Loop until the counter is the index and return the item at that index.
             while counter <= index: # Big O(n) Notation
                 if counter == index:
-                    return node
+                    return node.data
                 else:
                     # if the current node is not at the index, check if the next one is.
                     if node.next != None:
@@ -197,8 +196,35 @@ class LinkedList(object):
         Worst case running time: ??? under what conditions? [TODO]"""
         # TODO: Find the node containing the given old_item and replace its
         # data with new_item, without creating a new node object
-        pass
 
+        # Check if the list has items.
+        if self.size > 0:
+            # Base nodes
+            node = self.head
+            # If the list does have items
+            found = False
+            # while loop until found == True
+            while found == False:
+                # Loop through nexts until the data matches
+                if old_item == node.data:
+                    # Replace the node.data with the new data.
+                    node.data = new_item
+                    found = True
+                # Else iterate
+                else:
+                    node = node.next
+                    if node.next == None:
+                        if old_item == node.data:
+                            # Replace the node.data with the new data.
+                            node.data = new_item
+                            found = True
+                        # Else iterate
+                        else:
+                            raise ValueError("Item not in list")
+
+        # Else raise error
+        else:
+            raise ValueError('List is empty')
     def delete(self, item):
         """Delete the given item from this linked list, or raise ValueError.
         Best case running time: ??? under what conditions? [TODO]
@@ -248,35 +274,49 @@ class LinkedList(object):
 
 
 def test_linked_list():
-    ll = LinkedList()
+    ll = LinkedList(['A', 'B', 'C'])
     print(ll)
 
-    print('Appending items:')
-    ll.append('A')
-    print(ll)
-    ll.append('B')
-    print(ll)
-    ll.append('C')
-    print(ll)
+    # print('Appending items:')
+    # ll.append('A')
+    # print(ll)
+    # ll.append('B')
+    # print(ll)
+    # ll.append('C')
+    # print(ll)
     print('head: {}'.format(ll.head))
     print('tail: {}'.format(ll.tail))
     print('size: {}'.format(ll.size))
     print('length: {}'.format(ll.length()))
 
-    print('Getting items by index:')
-    for index in range(ll.size):
-        item = ll.get_at_index(index)
-        print('get_at_index({}): {!r}'.format(index, item))
-
-    print("Adding Z before C")
-    ll.insert_at_index(index=2, item="Z")
-    print("insert_at_index({},{})".format(2, "Z"))
+    # print('Getting items by index:')
+    # for index in range(ll.size):
+    #     item = ll.get_at_index(index)
+    #     print('get_at_index({}): {!r}'.format(index, item))
+    #
+    # print("Adding Z before C")
+    # ll.insert_at_index(index=2, item="Z")
+    # print("insert_at_index({},{})".format(2, "Z"))
 
     # print('Deleting items:')
+    #
+    # print("\nDeleting B")
     # ll.delete('B')
     # print(ll)
+    # print('head: {}'.format(ll.head))
+    # print('tail: {}'.format(ll.tail))
+    # print('size: {}'.format(ll.size))
+    # print('length: {}'.format(ll.length()))
+    #
+    # print("\nDeleting C")
     # ll.delete('C')
     # print(ll)
+    # print('head: {}'.format(ll.head))
+    # print('tail: {}'.format(ll.tail))
+    # print('size: {}'.format(ll.size))
+    # print('length: {}'.format(ll.length()))
+    #
+    # print("\nDeleting A")
     # ll.delete('A')
     # print(ll)
     # print('head: {}'.format(ll.head))
@@ -290,6 +330,8 @@ def test_linked_list():
     # print("Looking for node at index 3")
     # ll.get_at_index(2)
 
+    ll.replace("C", "Z")
+    print(ll)
 
 
 if __name__ == '__main__':
