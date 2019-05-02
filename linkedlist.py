@@ -120,7 +120,7 @@ class LinkedList(object):
             node_before_index = Node("")
             # Loop until you reach the current index.
             counter = 0
-            while counter <= index:
+            while counter <= index: # Big O(n)
                 # Replace the .next on the node before.
                 if counter == index:
                     new_node = Node(data=item)
