@@ -113,6 +113,31 @@ class LinkedList(object):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node before the given index and insert item after it
 
+        # Check if the list has items
+        if self.size > 0:
+            # Save the current node and the one before that
+            node_at_index = self.head
+            node_before_index = Node("")
+            # Loop until you reach the current index.
+            counter = 0
+            while counter <= index:
+                # Replace the .next on the node before.
+                if counter == index:
+                    new_node = Node(data=item)
+                    new_node.next = node_at_index
+                    node_before_index.next = new_node
+                    # print("You have successfully inserted {} after {} at index {}".format(node_at_index, node_before_index, counter))
+                    counter += 1
+                else:
+                    # Set your new node.next to the one at the current index.
+                    node_before_index = node_at_index
+                    if node_at_index.next != None:
+                        node_at_index = node_at_index.next
+                        counter += 1
+                    else:
+                        raise ValueError('List index out of range: {}'.format(index))
+        else:
+            raise ValueError("Empty list")
 
 
     def append(self, item):
@@ -242,6 +267,10 @@ def test_linked_list():
     for index in range(ll.size):
         item = ll.get_at_index(index)
         print('get_at_index({}): {!r}'.format(index, item))
+
+    print("Adding Z before C")
+    ll.insert_at_index(index=2, item="Z")
+    print("insert_at_index({},{})".format(2, "Z"))
 
     # print('Deleting items:')
     # ll.delete('B')
