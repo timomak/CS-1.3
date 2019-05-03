@@ -112,6 +112,15 @@ class LinkedList(object):
             raise ValueError('List index out of range: {}'.format(index))
         # TODO: Find the node before the given index and insert item after it
 
+
+        if index == self.size:
+            self.append(item)
+            return
+
+        if index == 0:
+            self.prepend(item)
+            return
+
         # Check if the list has items
         if self.size > 0:
             # Save the current node and the one before that
@@ -125,6 +134,7 @@ class LinkedList(object):
                     new_node = Node(data=item)
                     new_node.next = node_at_index
                     node_before_index.next = new_node
+                    self.size += 1
                     # print("You have successfully inserted {} after {} at index {}".format(node_at_index, node_before_index, counter))
                     counter += 1
                 else:
@@ -134,9 +144,16 @@ class LinkedList(object):
                         node_at_index = node_at_index.next
                         counter += 1
                     else:
-                        raise ValueError('List index out of range: {}'.format(index))
-        else:
-            raise ValueError("Empty list")
+                        # check if the last item is the item we're looking for.
+                        if counter == index:
+                            new_node = Node(data=item)
+                            # No need
+                            # new_node.next = node_at_index
+                            node_before_index.next = new_node
+                            # print("You have successfully inserted {} after {} at index {}".format(node_at_index, node_before_index, counter))
+                            return
+                        else:
+                            raise ValueError('List index out of range: {}'.format(index))
 
 
     def append(self, item):
@@ -329,9 +346,30 @@ def test_linked_list():
     #
     # print("Looking for node at index 3")
     # ll.get_at_index(2)
+    #
+    # ll.replace("C", "Z")
+    # print(ll)
 
-    ll.replace("C", "Z")
-    print(ll)
+    ll.insert_at_index(0, "Z")
+    print("\n",ll)
+    print('head: {}'.format(ll.head))
+    print('tail: {}'.format(ll.tail))
+    print('size: {}'.format(ll.size))
+    print('length: {}'.format(ll.length()))
+
+    ll.insert_at_index(4, "T")
+    print("\n",ll)
+    print('head: {}'.format(ll.head))
+    print('tail: {}'.format(ll.tail))
+    print('size: {}'.format(ll.size))
+    print('length: {}'.format(ll.length()))
+
+    ll.insert_at_index(4, "X")
+    print("\n",ll)
+    print('head: {}'.format(ll.head))
+    print('tail: {}'.format(ll.tail))
+    print('size: {}'.format(ll.size))
+    print('length: {}'.format(ll.length()))
 
 
 if __name__ == '__main__':
