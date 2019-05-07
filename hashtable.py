@@ -158,7 +158,7 @@ class HashTable(object):
         # which will rehash them into a new bucket index based on the new size
         for key, value in items:
             self.set(key, value)
-        return self
+        # Still getting an error.
 
 
 def test_hash_table():
