@@ -25,11 +25,11 @@ class SetTest(unittest.TestCase):
         assert s.contains('A') is True
         assert s.contains('B') is True
         assert s.contains('C') is False
-        assert s.contains() is False # nothing is passed. return False
+        assert s.contains('') is False # nothing is passed. return False
 
     def test_add(self):
         s = Set()
-        set.add('A')
+        s.add('A')
         assert s.length() == 1
         assert s.contains('A') is True
         s.add('B')
@@ -68,14 +68,14 @@ class SetTest(unittest.TestCase):
         temp = Set(['C', 'D'])
         assert s.difference(temp).length() == 2
         temp2 = s = Set(['A', 'B', 'C'])
-        assert s.difference(temp).length() == 0 # no difference
+        assert s.difference(temp2).length() == 0 # no difference
 
-    def test_is_subset_true(self):
+    def test_is_subset(self):
         s = Set(['A', 'B', 'C'])
         temp = Set(['A', 'B'])
-        assert temp.is_subset(set) is True
+        assert temp.is_subset(s) is True
         temp2 = Set(['E','F'])
-        assert temp2.is_subset(set) is False
+        assert temp2.is_subset(s) is False
 
 
 if __name__ == '__main__':
