@@ -343,26 +343,26 @@ class BinarySearchTree(object):
         # Return level-order list of all items in tree
         return items
 
-    # def _traverse_level_order_iterative(self, start_node, visit):
-    #     """Traverse this binary tree with iterative level-order traversal (BFS).
-    #     Start at the given node and visit each node with the given function.
-    #     TODO: Running time: ??? Why and under what conditions?
-    #     TODO: Memory usage: ??? Why and under what conditions?"""
-    #     # TODO: Create queue to store nodes not yet traversed in level-order
-    #     queue = ...
-    #     # TODO: Enqueue given starting node
-    #     ...
-    #     # TODO: Loop until queue is empty
-    #     while ...:
-    #         # TODO: Dequeue node at front of queue
-    #         node = ...
-    #         # TODO: Visit this node's data with given function
-    #         ...
-    #         # TODO: Enqueue this node's left child, if it exists
-    #         ...
-    #         # TODO: Enqueue this node's right child, if it exists
-    #         ...
-    #
+    def _traverse_level_order_iterative(self, start_node, visit):
+        """Traverse this binary tree with iterative level-order traversal (BFS).
+        Start at the given node and visit each node with the given function.
+        TODO: Running time: ??? Why and under what conditions?
+        TODO: Memory usage: ??? Why and under what conditions?"""
+        # TODO: Create queue to store nodes not yet traversed in level-order
+        # queue = ...
+        # # TODO: Enqueue given starting node
+        # ...
+        # # TODO: Loop until queue is empty
+        # while ...:
+        #     # TODO: Dequeue node at front of queue
+        #     node = ...
+        #     # TODO: Visit this node's data with given function
+        #     ...
+        #     # TODO: Enqueue this node's left child, if it exists
+        #     ...
+        #     # TODO: Enqueue this node's right child, if it exists
+        #     ...
+
 
 def test_binary_search_tree():
     # Create a complete binary search tree of 3, 7, or 15 items in level-order
@@ -394,7 +394,7 @@ def test_binary_search_tree():
     print('items in-order:    {}'.format(tree.items_in_order()))
     print('items pre-order:   {}'.format(tree.items_pre_order()))
     print('items post-order:  {}'.format(tree.items_post_order()))
-    print('items level-order: {}'.format(tree.items_level_order()))
+    # print('items level-order: {}'.format(tree.items_level_order()))
 
 
 if __name__ == '__main__':
