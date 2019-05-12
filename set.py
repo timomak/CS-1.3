@@ -6,7 +6,7 @@ class Set:
     def __init__(self, elements=None):
         """Initialize this Set list and append the given items, if any."""
         self.data = HashTable() # Using the hashtable functions
-
+        # self.size = self.data.size
         # Append the given elements
         if elements is not None:
             for element in elements:
@@ -21,13 +21,14 @@ class Set:
         """Return a string representation of this Set."""
         return 'Set({!r})'.format(self.data.keys())
 
+    # Thank you Connor!
+    @property
+    def size(self):
+        return self.data.size
+
     def length(self):
         """Return the length of this Set using the hashtable function."""
         return self.data.length()
-
-    def size(self):
-        "Returns number of buckets in Set."
-        return self.data.size
 
     def contains(self, element):
         """Returns a boolean indicating whether element is in this set"""
@@ -72,7 +73,7 @@ class Set:
         """Returns a new set that is the difference of this set and other_set"""
         difference = Set()
 
-        # O(n)^2
+        # O(n)
         for element in self.data.keys():
             if other_set.contains(element) == False:
                 difference.add(element)
