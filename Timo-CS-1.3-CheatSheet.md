@@ -86,7 +86,7 @@ def factorial_recursive(n):
 print(factorial_recursive(5)) # 5 * 4 * 3 * 2 * 1 = 120
 ```
 
-#### Linear Search vs. Binary Search
+#### [Linear Search vs. Binary Search](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Big O Notation Article on Medium")
 Binary Search is an algorithm to sort through sorted data sets. The program begins by making many operations at the beginning but it quickly flatlines. It works by starting in the middle of a sorted list and check if the item is greater or smaller. If it’s greater, it removes the entirety of the smaller data sets. It repeats the process with the remaining data sets.
 
 ![GIF Binary Search](img/binary_search.gif)
@@ -217,6 +217,156 @@ F (15 – uh oh, we’re getting full)
 
 There's a pattern between Base 16 and Base 2.
 Each *Tick* on Base 16 would be matching exactly the *Tick* on a 4-bit on Base 2.
+
+```Python
+"""
+Decode a digit from any base to base 10 equivalent.
+"""
+import string
+def decode(digits, base):
+    """Decode given digits in given base to number in base 10.
+    digits: str -- string representation of number (in given base)
+    base: int -- base of given number
+    return: int -- integer representation of number (in base 10)"""
+    # Handle up to base 36 [0-9a-z]
+    assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
+
+    # Decode digits from binary (base 2)
+    if base is 2:
+        answer = 0
+        lenght = len(digits) - 1
+        for num in digits:
+            num = int(num)
+            value = num * (base ** lenght)
+            lenght -= 1
+            answer += value
+        return answer
+
+    # Decode digits from hexadecimal (base 16)
+    elif base is 16:
+        answer = 0
+        lenght = len(digits) - 1
+
+        for num in digits:
+            if num.isalpha():
+                num = num.upper()
+                if num == "A":
+                    num = 10
+                elif num == "B":
+                    num = 11
+                elif num == "C":
+                    num = 12
+                if num == "D":
+                    num = 13
+                if num == "E":
+                    num = 14
+                if num == "F":
+                    num = 15
+            num = int(num)
+
+            answer += num * (base ** lenght)
+            lenght -= 1
+        return answer
+
+    # Decode digits from any base (2 up to 36)
+    elif 2 < base <= 36:
+        answer = 0
+        lenght = len(digits) - 1
+        for number in digits:
+            if number.isalpha():
+                number = number.upper()
+                number = string.ascii_uppercase.index(number) + 10
+            number = int(number)
+            answer += number * (base ** lenght)
+            lenght -= 1
+        return answer
+```
+
+```Python
+"""
+Encode a base 10 number to its equivalent in any other base (Base between 2-36)
+"""
+def encode(number, base):
+    """Encode given number in base 10 to digits in given base.
+    number: int -- integer representation of number (in base 10)
+    base: int -- base to convert to
+    return: str -- string representation of number (in given base)"""
+    # Handle up to base 36 [0-9a-z]
+    assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
+    # Handle unsigned numbers only for now
+    assert number >= 0, 'number is negative: {}'.format(number)
+
+    # Encode number in binary (base 2)
+    if base == 2:
+        number_array = [number]
+        answer = ""
+
+        # Keep the loop until it finished diving it.
+        while number > 1:
+            number = number // 2
+            number_array.append(number)
+
+        # Convert each number in array to one binary number.
+        for num in number_array:
+            answer = str(num % 2) + answer
+
+        # Return
+        return answer
+
+    # Encode number in hexadecimal (base 16)
+    elif base == 16:
+        hex = ""
+        while number > 0:
+            hex_num = number % 16
+            number = number // 16
+            new_hex_value = hex_num
+            if hex_num < 10:
+                new_hex_value = hex_num
+            elif hex_num == 10:
+                new_hex_value = "A"
+            elif hex_num == 11:
+                new_hex_value = "B"
+            elif hex_num == 12:
+                new_hex_value = "C"
+            elif hex_num == 13:
+                new_hex_value = "D"
+            elif hex_num == 14:
+                new_hex_value = "E"
+            elif hex_num == 15:
+                new_hex_value = "F"
+
+            hex = str(new_hex_value) + hex
+
+        return hex
+    # Encode number in any base (2 up to 36)
+    elif 2 < base <= 36:
+        answer = ""
+        while number > 0:
+            value = number % base
+            number = number // base
+            if value >= 10 and value < base:
+                value = string.ascii_uppercase[value - 10]
+            answer = str(value) + answer
+        print(answer)
+```
+```Python
+"""
+Convert a digit from any base to any other base. (Between Bases 2-36).
+"""
+def convert(digits, base1, base2): # Needs encode() and decode() to work.
+    """Convert given digits in base1 to digits in base2.
+    digits: str -- string representation of number (in base1)
+    base1: int -- base of given number
+    base2: int -- base to convert to
+    return: str -- string representation of number (in base2)"""
+    # Handle up to base 36 [0-9a-z]
+    assert 2 <= base1 <= 36, 'base1 is out of range: {}'.format(base1)
+    assert 2 <= base2 <= 36, 'base2 is out of range: {}'.format(base2)
+
+    return encode(decode(digits, base1), base2)
+
+```
+
 
 ## Data structures
 * **Arrays** (static/fixed-size and dynamic/resizable), operations, automatic resizing
