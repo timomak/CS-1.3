@@ -1,16 +1,17 @@
 # CS 1.3 Timo's Cheatsheet
 **90 Minute test. Paper. No Computer. Diagrams.**
-### Writing high-quality code
+## Writing high-quality code
 * Organization and modularity, separation of concerns
 * Refactoring code with helper functions (**DRY principle**)
 * Defining new classes and instance methods (**OOP in Python**)
 * Encapsulation, composition, and inheritance (**OOP concepts**)
 
-### Python programming
+## Python programming
 * **Data types** (integer, float, and string)
 * **Collections** (list, tuple, and dictionary), common operations
 * **String manipulation** (indexing, slicing, splitting, and joining)
 
+#### [String Manipulation](https://medium.com/@timothy.kaing/3ef411a2d88d "Article By Tim Kaing")
 ```Python
 """
 String Manipulation
@@ -25,8 +26,23 @@ one_to_five = string[0:5] # "12345"
 five_to_nine = string[-5:] # "56789"
 
 reverse_string = string[::-1] # "987654321"
+
+one = string[0] # "1"
+
+length = len(string) # 9
+
+# Code by Tim Kaing
+my_string = "I like turtles"
+
+my_string.upper() # converts to "I LIKE TURTLES"
+
+my_string.lowercase() # converts to "i like turtles"
+
+my_string.title() # converts to "I Like Turtles"
+
+my_string.swapcase() # converts to "i LIKE TURTLES"
 ```
-### Algorithms
+## Algorithms
 * Algorithm time and space complexity analysis with [**big-O notation**](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
 * Recursion, applications to factorial, binary search algorithm, trees, and traversals
 * Linear search, binary search (find index of element in array), input assumptions
@@ -71,7 +87,9 @@ print(factorial_recursive(5)) # 5 * 4 * 3 * 2 * 1 = 120
 ```
 
 #### Linear Search vs. Binary Search
-![GIF Binary Seach](img/binary_search.gif)
+Binary Search is an algorithm to sort through sorted data sets. The program begins by making many operations at the beginning but it quickly flatlines. It works by starting in the middle of a sorted list and check if the item is greater or smaller. If it’s greater, it removes the entirety of the smaller data sets. It repeats the process with the remaining data sets.
+
+![GIF Binary Search](img/binary_search.gif)
 ```Python
 """
 Linear Search through unsorted array.
@@ -87,6 +105,7 @@ def linear_search(array, n):
 num_array = [9,7,2,1,3,6,5,4,8]
 linear_search(num_array, 9) # Returns index 0
 ```
+> Binary Search is considerably faster than Linear Search when handling larger data inputs.
 
 ```Python
 """
@@ -138,8 +157,63 @@ binary_search(num_array, 0, len(num_array), 1) # Returns the index of 1 (0)
 ```
 
 > Base 2 (Binary)
+A base 2 numeral system is what our computers operate by today. It’s easy for computers to operate when whey only need to know if the value is 0 and 1 or also seen as True and False.
+```
+0: 0
+1: 1
+2: 10 (we’re full – tick over)
+3: 11
+4: 100 (we’re full again – tick over)
+5: 101
+6: 110
+7: 111
+8: 1000 (tick over again)
+```
 
-### Data structures
+> Base 16 (Hexadecimal)
+Similarly to how base 10 made it easier to display larger numbers than base 2, so is base 16 easier to write than base 10.
+```
+1
+2
+3
+4
+5
+6
+7
+8
+9
+A (10 – we’re using the symbol “A”)
+B (11)
+C (12)
+D (13)
+E (14)
+F (15 – uh oh, we’re getting full)
+10 (16 – we start a new digit)
+```
+
+> Summary of Numerals
+Base 10 : Base 16: Base 2
+ 0 : 0 : 0000
+ 1 : 1 : 0001
+ 2 : 2 : 0010
+ 3 : 3 : 0011
+ 4 : 4 : 0100
+ 5 : 5 : 0101
+ 6 : 6 : 0111
+ 7 : 7 : 1000
+ 8 : 8 : 1001
+ 9 : 9 : 1011
+10 : A : 1111
+11 : B : 0000
+12 : C : 0001
+13 : D : 0011
+14 : E : 0111
+15 : F : 1111
+16 : 10: 0000
+...
+255 : FF : 11111111
+
+## Data structures
 * **Arrays** (static/fixed-size and dynamic/resizable), operations, automatic resizing
 * **Linked lists** (singly-linked only, not doubly-linked), nodes, traversal, operations
 * **Hash tables**, operations, hash collision and resolution (chaining with linked lists only, not probing), calculating load factor, automatic resizing and rehashing
@@ -147,12 +221,12 @@ binary_search(num_array, 0, len(num_array), 1) # Returns the index of 1 (0)
 * Diagramming how data structures are organized in memory
 Performance comparisons between data structures
 
-### Abstract data types (ADTs)
+## Abstract data types (ADTs)
 * **List ADT**, stack, queue, operations, implementation with array and linked list
 * **Map ADT** (a.k.a. dictionary), operations (contains, get, set, and delete), storing and retrieving key-value entries, implementation with hash table
 * **Set ADT**, operations on elements (contains, add, and remove), operations on other sets (intersection, union, difference, and is subset), implementation with dynamic array, sorted array, singly-linked list, hash table, and binary search tree
 
-### Unit testing
+## Unit testing
 * **Reading assertion** failures and stack traces to locate the source of an error
 * **Writing assert** statements and unit test functions to ensure correct behavior
 
