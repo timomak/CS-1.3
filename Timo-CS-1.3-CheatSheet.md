@@ -191,27 +191,32 @@ F (15 – uh oh, we’re getting full)
 10 (16 – we start a new digit)
 ```
 
-> Summary of Numerals
-Base 10 : Base 16: Base 2
+> **Base 10** : **Base 16** : **Base 2**
+```
  0 : 0 : 0000
  1 : 1 : 0001
  2 : 2 : 0010
  3 : 3 : 0011
  4 : 4 : 0100
  5 : 5 : 0101
- 6 : 6 : 0111
- 7 : 7 : 1000
- 8 : 8 : 1001
- 9 : 9 : 1011
-10 : A : 1111
-11 : B : 0000
-12 : C : 0001
-13 : D : 0011
-14 : E : 0111
+ 6 : 6 : 0110
+ 7 : 7 : 0111
+ 8 : 8 : 1000
+ 9 : 9 : 1001
+10 : A : 1010
+11 : B : 1011
+12 : C : 1100
+13 : D : 1101
+14 : E : 1110
 15 : F : 1111
-16 : 10: 0000
+...
+16 : 10: 10000
 ...
 255 : FF : 11111111
+```
+
+There's a pattern between Base 16 and Base 2.
+Each *Tick* on Base 16 would be matching exactly the *Tick* on a 4-bit on Base 2.
 
 ## Data structures
 * **Arrays** (static/fixed-size and dynamic/resizable), operations, automatic resizing
