@@ -6,49 +6,17 @@
 * Defining new classes and instance methods (**OOP in Python**)
 * Encapsulation, composition, and inheritance (**OOP concepts**)
 
-## Python programming
+## [Python programming](python-programming.md)
 * **Data types** (integer, float, and string)
 * **Collections** (list, tuple, and dictionary), common operations
 * **String manipulation** (indexing, slicing, splitting, and joining)
 
-#### [String Manipulation](https://medium.com/@timothy.kaing/3ef411a2d88d "Article By Tim Kaing")
-```Python
-"""
-String Manipulation
-"""
-string = "123456789"
-
-for char in string:
-  print(char) # 1,2,3,4,5,6...
-
-one_to_five = string[0:5] # "12345"
-
-five_to_nine = string[-5:] # "56789"
-
-reverse_string = string[::-1] # "987654321"
-
-one = string[0] # "1"
-
-length = len(string) # 9
-
-# Code by Tim Kaing
-my_string = "I like turtles"
-
-my_string.upper() # converts to "I LIKE TURTLES"
-
-my_string.lowercase() # converts to "i like turtles"
-
-my_string.title() # converts to "I Like Turtles"
-
-my_string.swapcase() # converts to "i LIKE TURTLES"
-```
 ## [Algorithms](Algorithms.md)
 * Algorithm time and space complexity analysis with [**big-O notation**](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
 * Recursion, applications to factorial, binary search algorithm, trees, and traversals
 * Linear search, binary search (find index of element in array), input assumptions
 * String searching (find starting index of pattern in text string), palindrome checking
 * Number bases (decoding, encoding, and converting between base 2, 10, and 16)
-
 
 ## Data structures
 * **Arrays** (static/fixed-size and dynamic/resizable), operations, automatic resizing

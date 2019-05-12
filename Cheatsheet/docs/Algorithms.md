@@ -1,3 +1,10 @@
+## [Algorithms](Algorithms.md)
+* Algorithm time and space complexity analysis with [**big-O notation**](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
+* Recursion, applications to factorial, binary search algorithm, trees, and traversals
+* Linear search, binary search (find index of element in array), input assumptions
+* String searching (find starting index of pattern in text string), palindrome checking
+* Number bases (decoding, encoding, and converting between base 2, 10, and 16)
+
 #### [Big O Notation](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
 ![Big O](img/Medium-graph.jpg )
 
