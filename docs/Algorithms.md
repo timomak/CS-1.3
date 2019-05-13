@@ -1,4 +1,4 @@
-## [Algorithms](Algorithms.md)
+## Algorithms
 * Algorithm time and space complexity analysis with [**big-O notation**](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
 * Recursion, applications to factorial, binary search algorithm, trees, and traversals
 * Linear search, binary search (find index of element in array), input assumptions
