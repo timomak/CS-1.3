@@ -1,14 +1,14 @@
-## Algorithms
+# Algorithms
 * Algorithm time and space complexity analysis with [**big-O notation**](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
 * Recursion, applications to factorial, binary search algorithm, trees, and traversals
 * Linear search, binary search (find index of element in array), input assumptions
 * String searching (find starting index of pattern in text string), palindrome checking
 * Number bases (decoding, encoding, and converting between base 2, 10, and 16)
 
-#### [Big O Notation](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
+## [Big O Notation](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
 ![Big O](img/Medium-graph.jpg )
 
-#### [Recursion vs. Iteration](https://medium.com/@asimzaidi/what-is-recursion-what-is-recursion-what-is-recur-dfcfdf51cc21 "By Asim Zaidi")
+## [Recursion vs. Iteration](https://medium.com/@asimzaidi/what-is-recursion-what-is-recursion-what-is-recur-dfcfdf51cc21 "By Asim Zaidi")
 ```Python
 """
 Find the factorial of a given number using an iterative function.
@@ -42,7 +42,7 @@ def factorial_recursive(n):
 print(factorial_recursive(5)) # 5 * 4 * 3 * 2 * 1 = 120
 ```
 
-#### [Linear Search vs. Binary Search](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Big O Notation Article on Medium")
+## [Linear Search vs. Binary Search](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Big O Notation Article on Medium")
 Binary Search is an algorithm to sort through sorted data sets. The program begins by making many operations at the beginning but it quickly flatlines. It works by starting in the middle of a sorted list and check if the item is greater or smaller. If it’s greater, it removes the entirety of the smaller data sets. It repeats the process with the remaining data sets.
 
 ![GIF Binary Search](img/binary_search.gif)
@@ -88,7 +88,7 @@ num_array.sort() # [1, 2, 3, 4, 5, 6, 7, 8, 9]
 binary_search(num_array, 0, len(num_array), 1) # Returns the index of 1 (0)
 ```
 
-#### [Numeral Systems](https://medium.com/@tmakhlay2/hexadecimal-base-16-numeral-system-14e6a19e58c1 "My Article about numeral systems")
+## [Numeral Systems](https://medium.com/@tmakhlay2/hexadecimal-base-16-numeral-system-14e6a19e58c1 "My Article about numeral systems")
 ![Matrix](img/matrix.gif)
 
 **Think of bases as ticks**, when does the numeral system require the addition of a second symbol to represent a larger number. The way you tick from 9 to 10. You add another symbol, to represent a larger number that could’ve not been represented by a single symbol.
