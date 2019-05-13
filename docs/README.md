@@ -7,19 +7,19 @@
 * Defining new classes and instance methods (**OOP in Python**)
 * Encapsulation, composition, and inheritance (**OOP concepts**)
 
-## [Python programming](python-programming.md)
+## Python programming
 * **Data types** (integer, float, and string)
 * **Collections** (list, tuple, and dictionary), common operations
 * **String manipulation** (indexing, slicing, splitting, and joining)
 
-## [Algorithms](Algorithms.md)
+## Algorithms
 * Algorithm time and space complexity analysis with [**big-O notation**](https://medium.com/@tmakhlay2/what-is-o-n-big-o-notation-how-to-use-it-e3da8592ac0c "My Blog Post for the Article Assignment")
 * Recursion, applications to factorial, binary search algorithm, trees, and traversals
 * Linear search, binary search (find index of element in array), input assumptions
 * String searching (find starting index of pattern in text string), palindrome checking
 * Number bases (decoding, encoding, and converting between base 2, 10, and 16)
 
-## [Data structures](data-structures.md)
+## Data structures
 * **Arrays** (static/fixed-size and dynamic/resizable), operations, automatic resizing
 * **Linked lists** (singly-linked only, not doubly-linked), nodes, traversal, operations
 * **Hash tables**, operations, hash collision and resolution (chaining with linked lists only, not probing), calculating load factor, automatic resizing and rehashing
