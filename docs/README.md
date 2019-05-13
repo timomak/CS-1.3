@@ -1,5 +1,6 @@
 # CS 1.3 Timo's Cheatsheet
-**90 Minute test. Paper. No Computer. Diagrams.**
+### **90 Minute test. Paper. No Computer. Diagrams.**
+![Drake](img/Drake.gif)
 ## Writing high-quality code
 * Organization and modularity, separation of concerns
 * Refactoring code with helper functions (**DRY principle**)
@@ -18,7 +19,7 @@
 * String searching (find starting index of pattern in text string), palindrome checking
 * Number bases (decoding, encoding, and converting between base 2, 10, and 16)
 
-## Data structures
+## [Data structures](data-structures.md)
 * **Arrays** (static/fixed-size and dynamic/resizable), operations, automatic resizing
 * **Linked lists** (singly-linked only, not doubly-linked), nodes, traversal, operations
 * **Hash tables**, operations, hash collision and resolution (chaining with linked lists only, not probing), calculating load factor, automatic resizing and rehashing
