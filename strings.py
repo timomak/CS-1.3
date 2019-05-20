@@ -4,16 +4,18 @@ def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
+    # Running time: O(n) because it needs to compare it to each item linearly.
     # TODO: Implement contains here (iteratively and/or recursively)
     if pattern in text:
         return True
     return False
+
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
         or None if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # time complexity - best case O(n), worse case O(nm)?
+    # Running time: O(n) because we need to iterate on the string.
     # TODO: Implement find_index here (iteratively and/or recursively)
     indices = find_all_indexes(text, pattern)
     if len(indices) > 0:
@@ -24,10 +26,10 @@ def find_index(text, pattern):
 def find_all_indexes(text, pattern):
     """Return a list of starting indexes of all occurrences of pattern in text,
         or an empty list if not found."""
+    # Running time: O(n) because we need to check each char in string.
+    
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_all_indexes here (iteratively and/or recursively)
-
 
     # Class Implementation
     # https://github.com/lvreynoso/CS1.3-Coursework/blob/master/strings.py
