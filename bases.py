@@ -1,6 +1,7 @@
 #!python
 
 import string
+import math
 # Hint: Use these string constants to encode/decode hexadecimal digits and more
 # string.digits is '0123456789'
 # string.hexdigits is '0123456789abcdefABCDEF'
@@ -9,6 +10,9 @@ import string
 # string.ascii_letters is ascii_lowercase + ascii_uppercase
 # string.printable is digits + ascii_letters + punctuation + whitespace
 
+int_to_string = string.digits + string.ascii_lowercase
+
+str_to_int = {string: index for index, string in enumerate(int_to_string)}
 
 def decode(digits, base):
     """Decode given digits in given base to number in base 10.
@@ -17,60 +21,13 @@ def decode(digits, base):
     return: int -- integer representation of number (in base 10)"""
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
-    # TODO: Decode digits from binary (base 2)
-    if base is 2:
-        answer = 0
-        lenght = len(digits) - 1
-        for num in digits:
-            num = int(num)
-            value = num * (base ** lenght)
-            lenght -= 1
-            answer += value
-        return answer
+    # Thank you Connor https://github.com/Connor-Cahill/CS-1.3-Core-Data-Structures/blob/master/Lessons/source/bases.py
 
-    # TODO: Decode digits from hexadecimal (base 16)
-
-    # Thanks to KJ for figuring it out!
-    elif base is 16:
-        answer = 0
-        lenght = len(digits) - 1
-
-        for num in digits:
-            if num.isalpha():
-                num = num.upper()
-                if num == "A":
-                    num = 10
-                elif num == "B":
-                    num = 11
-                elif num == "C":
-                    num = 12
-                if num == "D":
-                    num = 13
-                if num == "E":
-                    num = 14
-                if num == "F":
-                    num = 15
-            num = int(num)
-
-            answer += num * (base ** lenght)
-            lenght -= 1
-        return answer
-
-    # TODO: Decode digits from any base (2 up to 36)
-
-    # Thanks to KJ for figuring it out too!
-    elif 2 < base <= 36:
-        answer = 0
-        lenght = len(digits) - 1
-        for number in digits:
-            if number.isalpha():
-                number = number.upper()
-                number = string.ascii_uppercase.index(number) + 10
-            number = int(number)
-            answer += number * (base ** lenght)
-            lenght -= 1
-        return answer
-
+    dec_sum = 0
+    # i = index and v = value
+    for i, v in enumerate(reversed(digits)):
+        dec_sum += (base**i) * str_to_int[v]
+    return dec_sum
 
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
@@ -80,59 +37,32 @@ def encode(number, base):
     # Handle up to base 36 [0-9a-z]
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
-    assert number >= 0, 'number is negative: {}'.format(number)
+    assert number >= 0, 'numberstr_to_int is negative: {}'.format(number)
     # TODO: Encode number in binary (base 2)
-    if base == 2:
-        number_array = [number]
-        answer = ""
 
-        # Keep the loop until it finished diving it.
-        while number > 1:
-            number = number // 2
-            number_array.append(number)
+    # Thank you Connor https://github.com/Connor-Cahill/CS-1.3-Core-Data-Structures/blob/master/Lessons/source/bases.py
 
-        # Convert each number in array to one binary number.
-        for num in number_array:
-            answer = str(num % 2) + answer
-
-        # Return
-        return answer
-
-    # TODO: Encode number in hexadecimal (base 16)
-    elif base == 16:
-        hex = ""
-        while number > 0:
-            hex_num = number % 16
-            number = number // 16
-            new_hex_value = hex_num
-            if hex_num < 10:
-                new_hex_value = hex_num
-            elif hex_num == 10:
-                new_hex_value = "A"
-            elif hex_num == 11:
-                new_hex_value = "B"
-            elif hex_num == 12:
-                new_hex_value = "C"
-            elif hex_num == 13:
-                new_hex_value = "D"
-            elif hex_num == 14:
-                new_hex_value = "E"
-            elif hex_num == 15:
-                new_hex_value = "F"
-
-            hex = str(new_hex_value) + hex
-
-        return hex
-    # TODO: Encode number in any base (2 up to 36)
-    elif 2 < base <= 36:
-        answer = ""
-        while number > 0:
-            value = number % base
-            number = number // base
-            if value >= 10 and value < base:
-                value = string.ascii_uppercase[value - 10]
-            answer = str(value) + answer
-        print(answer)
+    # number to be returned
+    new_base = ''
+    # find largest whole number log smaller than number
+    if number > 0:
+        lg_power = math.floor(math.log(number, base))
+    else:
+        return '0'
+    lg_power = int(lg_power)
+    # looping backwards (-1 for 3rd arg) including 0 (-1 for 2nd arg)
+    for i in range(lg_power, -1, -1):
+        # check if base to power of temp_num less than number
+        if base**i <= number:
+            # create number to add to return val
+            temp_num = number // (base**i)
+            # sutbract temp number from number
+            number -= temp_num * (base**i)
+            new_base += int_to_string[temp_num]
+        else:
+            # add 0 to output string
+            new_base += '0'
+    return new_base
 
 
 def convert(digits, base1, base2):
@@ -158,10 +88,10 @@ def main():
         base2 = int(args[2])
         # Convert given digits between bases
         result = convert(digits, base1, base2)
-        print(result)
-        return result
+        # print(result)
+        # return result
 
-        # print('{} in base {} is {} in base {}'.format(digits, base1, result, base2))
+        print('{} in base {} is {} in base {}'.format(digits, base1, result, base2))
     else:
         print('Usage: {} digits base1 base2'.format(sys.argv[0]))
         print('Converts digits from base1 to base2')

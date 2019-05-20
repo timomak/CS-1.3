@@ -13,10 +13,10 @@ def find_index(text, pattern):
         or None if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
+    # time complexity - best case O(n), worse case O(nm)?
     # TODO: Implement find_index here (iteratively and/or recursively)
     indices = find_all_indexes(text, pattern)
     if len(indices) > 0:
-        print(indices)
         return indices[0]
     return None
 
@@ -28,12 +28,18 @@ def find_all_indexes(text, pattern):
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement find_all_indexes here (iteratively and/or recursively)
 
+
     # Class Implementation
     # https://github.com/lvreynoso/CS1.3-Coursework/blob/master/strings.py
+    # time complexity - best case O(n), worse case O(nm)?
+    if pattern == '':
+        return [position for position, character in enumerate(text)]
+
     indices = []
     candidates = {}
     delta = len(pattern)
     for position, character in enumerate(text):
+        # try to match all the first letters of the pattern
         if character == pattern[0]:
             candidates[position] = 1
         for index, streak in candidates.items():
@@ -43,9 +49,10 @@ def find_all_indexes(text, pattern):
                 elif index != position and character != pattern[streak]:
                     candidates[index] = False
                 if candidates[index] == delta:
-                    indices.append(index)
-                    candidates[index] = False
+                        indices.append(index)
+                        candidates[index] = False
     return indices
+
 
 def test_string_algorithms(text, pattern):
     found = contains(text, pattern)
