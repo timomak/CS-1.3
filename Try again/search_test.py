@@ -1,4 +1,5 @@
 #!python
+# coding: utf-8
 
 from search import linear_search, binary_search
 import unittest

@@ -1,4 +1,5 @@
 #!python
+# coding: utf-8
 
 def linear_search(array, item):
     """return the first index of item in array or None if item is not found"""
@@ -9,6 +10,9 @@ def linear_search(array, item):
 
 
 def linear_search_iterative(array, item):
+    """
+    Running time: O(n) – Depeding on lenght of array. Loops over each item.
+    """
     # loop over all array values until item is found
     for index, value in enumerate(array):
         if item == value:
@@ -16,8 +20,11 @@ def linear_search_iterative(array, item):
     return None  # not found
 
 def linear_search_recursive(array, item, index=0):
-    # TODO: implement linear search recursively here
-    pass
+    """
+    Linear search recursively
+
+    Running time: O(1) – No loops.
+    """
     if (len(array) - 1) < index:
         return None
 
@@ -43,6 +50,11 @@ def binary_search_iterative(array, target):
     # TODO: implement binary search iteratively here
     pass
 
+    """
+    Binary search iteratively here
+    Running time: O(log n) – Binary Search. Gets faster the longer the array.
+    """
+
     left = 0
     right = len(array) - 1
 
@@ -66,7 +78,10 @@ def binary_search_iterative(array, target):
     # to verify that your iterative implementation passes all tests
 
 def binary_search_recursive(array, item, left=None, right=None):
-    # TODO: implement binary search recursively heres
+    """
+    Binary search recursively here
+    Running time: O(log n) – Binary Search. Gets faster the longer the array.
+    """
     if right == None:
         left = 0
         right = len(array) - 1
