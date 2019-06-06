@@ -47,9 +47,6 @@ def binary_search(array, item):
 
 
 def binary_search_iterative(array, target):
-    # TODO: implement binary search iteratively here
-    pass
-
     """
     Binary search iteratively here
     Running time: O(log n) – Binary Search. Gets faster the longer the array.
@@ -58,9 +55,9 @@ def binary_search_iterative(array, target):
     left = 0
     right = len(array) - 1
 
-    while left <= right:
+    while left < right:
         middle = (right + left) // 2
-        # print(f"Middle: {middle}")
+
         item = array[middle]
 
         if item == target:

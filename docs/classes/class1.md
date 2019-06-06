@@ -1,4 +1,6 @@
 # Number Bases
+Github Lesson 1 ([link](https://github.com/Make-School-Courses/CS-1.3-Core-Data-Structures/blob/master/Lessons/NumberBases.md))
+
 > I didn't take a lot of notes cause I wrote an article on the topic. I've only annotated the fundamentals on this page.
 [My Article on numeral bases](https://medium.com/@tmakhlay2/hexadecimal-base-16-numeral-system-14e6a19e58c1 "My Article about numeral systems")
 
