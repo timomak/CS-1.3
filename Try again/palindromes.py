@@ -8,6 +8,9 @@ import string
 
 
 def clean_up_text(text):
+    """
+    Runtime: O(n) depending on lenght of the text.
+    """
     text = text.lower()
     if text == '':
         return text
@@ -46,16 +49,14 @@ def is_palindrome_iterative(text):
     If they don't match, program will return False.
     If they match, program will continue, will compare 2nd letter and 2nd to last letter.
     If they all matched, the method will return True.
-
+    Runtime: O(n) because of text clean up + O(n) from while loop.
     """
     text = clean_up_text(text) # Remove punctuation and put all low caps
     front_index = 0
     back_index = len(text) - 1 # Minus one because we need the last index
 
 
-    while back_index > front_index:
-        if back_index <= front_index:
-            break
+    while back_index > front_index: # O(n) / 2 but still is O(n) because it's still linear.
         if text[back_index] != text[front_index]:
             return False
         front_index += 1
@@ -89,6 +90,6 @@ def main():
 
 
 if __name__ == '__main__':
-    # main()
-    print(is_palindrome("No, On!"))
-    print(clean_up_text(text="No, On!"))
+    main()
+    # print(is_palindrome("No, On!"))
+    # print(clean_up_text(text="No, On!"))
