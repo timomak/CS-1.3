@@ -31,7 +31,7 @@ def is_palindrome(text):
 def is_palindrome_iterative(text):
     # MY METHOD
     # text = clean_up_text(text) # Remove punctuation and put all low caps
-    #
+    # #
     # # Reverse the text
     # reverse = text[::-1]
     #
@@ -65,6 +65,9 @@ def is_palindrome_iterative(text):
 
 
 def is_palindrome_recursive(text, left=None, right=None):
+    """
+    Runtime: O(n) because of text clean up + O(n) / 2 for this recursive function.
+    """
         text = clean_up_text(text) # Remove punctuation and put all low caps
         if left is not None:
             if left > right:
