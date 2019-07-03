@@ -24,45 +24,54 @@ class Set:
     # Thank you Connor!
     @property
     def size(self):
+        """
+        Best and worst case running time: O(1)
+        """
         return self.data.size
 
     def length(self):
-        """Return the length of this Set using the hashtable function."""
+        """Return the length of this Set using the hashtable function.
+        Best and worst case running time: O(1)"""
         return self.data.length()
 
     def contains(self, element):
-        """Returns a boolean indicating whether element is in this set"""
+        """Returns a boolean indicating whether element is in this set.
+        Best and worst case running time: O(1)"""
         return self.data.contains(element)
 
     def add(self, element):
-        """Adds an element to this set, if not present already"""
+        """Adds an element to this set, if not present already
+        Best and worst case running time: O(1) (O(n) if resize is called)"""
         # If element is not present in list
         if self.data.contains(element) == False:
             self.data.set(element, element)
 
 
     def remove(self, element):
-        """Remove element from this set, if present, or else raise KeyError"""
+        """Remove element from this set, if present, or else raise KeyError
+        Best and worst case running time: O(1)"""
         if self.data.contains(element) == True:
             self.data.delete(element)
         else:
             raise KeyError("Item doesn't exist in Set.")
 
     def union(self, other_set):
-        """Returns a new set that is the union of this set and other_set"""
+        """Returns a new set that is the union of this set and other_set
+        Best and worst case running time: O(n)"""
         combined = [item for item in self.data.keys()]
         combined.extend(item for item in other_set.data.keys())
         return Set(combined)
 
     def intersection(self, other_set):
-        """Returns a new set that is the intersection of this set and other_set"""
+        """Returns a new set that is the intersection of this set and other_set
+        Best and worst case running time: O(n)"""
         # Thank you Connor!
         intersection = Set()
 
         larger = self if self.length() >= other_set.length() else other_set
         smaller = self if self.length() < other_set.length() else other_set
 
-        # O(n)^2
+        # O(n)
         for element in larger.data.keys():
             if smaller.contains(element):
                 intersection.add(element)
@@ -70,7 +79,8 @@ class Set:
         return intersection
 
     def difference(self, other_set):
-        """Returns a new set that is the difference of this set and other_set"""
+        """Returns a new set that is the difference of this set and other_set
+        Best and worst case running time: O(n)"""
         difference = Set()
 
         # O(n)
@@ -82,7 +92,8 @@ class Set:
 
 
     def is_subset(self, other_set):
-        """Returns a boolean indicating whether other_set is a subset of this set"""
+        """Returns a boolean indicating whether other_set is a subset of this set
+        Best and worst case running time: O(n)"""
         if other_set.length() < self.length():
             return False
 
