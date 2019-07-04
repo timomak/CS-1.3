@@ -1,13 +1,11 @@
-import string
-import math
+def flip_vertical_axis(matrix):
+    temp = []
+    for array in matrix:
+        temp_array = array[::-1]
+        temp.append(temp_array)
+    return temp
 
-int_to_string = string.digits + string.ascii_lowercase
-str_to_int = {string: index for index, string in enumerate(int_to_string)}
-
-# print(str_to_int["1"])
-number = 10
-base = 2
-
-lg_power = math.floor(math.log(number, base))
-
-print(lg_power)
+print(flip_vertical_axis([[0,0,1], [1,2,3]]))
+# test = [0,1,2,3,4]
+# array = test[::-1]
+# print(array)
